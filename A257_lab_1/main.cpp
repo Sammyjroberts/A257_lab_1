@@ -14,7 +14,7 @@
  *   3. Print the final quilt block                                                                    *
  *   You must use:                                                                                     *
  *   • At least one for loop                                                                           *
- *   • At least one while/dowhile loop                                                                         *
+ *   • At least one while/dowhile loop                                                                 *
  *   • A 2D array                                                                                      *
  *                                                                                                     *
  *                                                                                                     *
