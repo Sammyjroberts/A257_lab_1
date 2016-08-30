@@ -33,6 +33,8 @@ char** buildQuilt(int length, int width, char even, char odd);
 void printQuilt(char** quilt, int width, int length);
 
 int main() {
+    //Title
+    std::cout << "---A257_lab_1: Quilting---" << std::endl;
     //intro to the program
     std::cout << "This program will create a quilt pattern. "
     << "The pattern will be a basic vertical stripe pattern. To represent the quilt block, we will use two different characters you will need to enter."
