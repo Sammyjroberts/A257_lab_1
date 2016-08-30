@@ -26,11 +26,11 @@
 #include <stdexcept>
 
 //inits and returns a character array. requires a length and width
-char** initArray(int length, int width);
+char** initArray(const int length, const int width);
 //creates the quilt, uses "Private" function initArray to also build the array. requires a length, width, and even/odd characters. We will use these characters to fill the quilt.
-char** buildQuilt(int length, int width, char even, char odd);
+char** buildQuilt(const int length, const int width, const char even, const char odd);
 //this function will output the quilt to cout
-void printQuilt(char** quilt, int width, int length);
+void printQuilt(char** quilt, const int width, const int length);
 
 int main() {
     //Title
@@ -97,11 +97,11 @@ int main() {
     quilt = buildQuilt(length, width, even, odd);
     
     //OUTPUT
-    printQuilt(quilt,width, length);
+    printQuilt(quilt, width, length);
 
     return 0;
 }
-char** initArray(int length, int width) {
+char** initArray(const int length, const int width) {
     //init the width of the array by creating a pointer to a array of pointers
     char **arr = new char*[width];
     //for each array in the array of pointers, point to a new array of size length
@@ -111,7 +111,7 @@ char** initArray(int length, int width) {
     
     return arr;
 }
-char** buildQuilt(int length, int width, char even, char odd) {
+char** buildQuilt(const int length, const int width, const char even, const char odd) {
     
     char **quilt;
     
@@ -137,7 +137,7 @@ char** buildQuilt(int length, int width, char even, char odd) {
     }
     return quilt;
 }
-void printQuilt(char** quilt, int width, int length) {
+void printQuilt(char** quilt, const int width, const int length) {
     for(int lcv = 0; lcv < width; lcv++) {
         for(int lcv2 = 0; lcv2 < length; lcv2++) {
             std::cout << quilt[lcv][lcv2] << " ";
