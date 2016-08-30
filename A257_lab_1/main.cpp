@@ -1,12 +1,30 @@
-//
-//  main.cpp
-//  A257_lab_1
-//
-//  Created by Sammy Roberts on 8/30/16.
-//  Copyright © 2016 Sammy Roberts. All rights reserved.
-//
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *   main.cpp                                                                                          *
+ *   A257_lab_1: Quilting                                                                              *
+ *                                                                                                     *
+ *   You will create a program that prints out a quilt pattern. The pattern will be a basic vertical   *
+ *   stripe pattern. To represent the quilt block, use a 2D character array filled with two different  *
+ *   characters. Each column will be a stripe. The first column is column 0.                           *
+ *   REQUIREMENTS:                                                                                     *
+ *   1. Ask for the dimensions of the quilt block. You may assume that the dimensions are              *
+ *   no greater than 25 so that you can use a static array. Feel free to use dynamic arrays.           *
+ *   Do not accept negative dimensions or dimensions greater than 25.                                  *
+ *   2. Ask the user for the character to use in the even column stripes. Then ask the user for        *
+ *   the character to use in the odd column stripes.                                                   *
+ *   3. Print the final quilt block                                                                    *
+ *   You must use:                                                                                     *
+ *   • At least one for loop                                                                           *
+ *   • At least one while/dowhile loop                                                                         *
+ *   • A 2D array                                                                                      *
+ *                                                                                                     *
+ *                                                                                                     *
+ *   Created by Sammy Roberts on 8/30/16.                                                              *
+ *   Copyright © 2016 Sammy Roberts. All rights reserved.                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <iostream>
+#include <stdexcept>
+
 //inits and returns a character array. requires a length and width
 char** initArray(int length, int width);
 //creates the quilt, uses "Private" function initArray to also build the array. requires a length, width, and even/odd characters. We will use these characters to fill the quilt.
@@ -27,11 +45,34 @@ int main() {
     char **quilt;
     
     //INPUT
-    std::cout << "Enter the length of the quilt block: ";
-    std::cin >> length;
-    
-    std::cout << "Enter the width of the quilt block: ";
-    std::cin >> width;
+    //TODO these dos could be moved into a function to facilitate code reuse / testing
+    //Think of a solution for duplicating the <=1 check
+    do {
+        try {
+            std::cout << "Enter the length of the quilt block: ";
+            std::cin >> length;
+            if(length <= 1) {
+                throw std::invalid_argument("Please enter a number larger than 1.");
+            }
+        }
+        catch(std::invalid_argument e){
+            std::cout << e.what() << std::endl;
+        }
+    }while(length <= 1);
+
+    do {
+        try {
+            std::cout << "Enter the width of the quilt block: ";
+            std::cin >> width;
+            if(width <= 1) {
+                throw std::invalid_argument("Please enter a number larger than 1.");
+            }
+        }
+        catch(std::invalid_argument e){
+            std::cout << e.what() << std::endl;
+        }
+    }while(width <= 1);
+
     
     //we must ignore leftover endls in the buffer
     std::cin.ignore (std::numeric_limits<std::streamsize>::max(), '\n');
