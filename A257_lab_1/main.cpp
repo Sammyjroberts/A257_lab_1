@@ -33,6 +33,11 @@ char** buildQuilt(int length, int width, char even, char odd);
 void printQuilt(char** quilt, int width, int length);
 
 int main() {
+    //intro to the program
+    std::cout << "This program will create a quilt pattern. "
+    << "The pattern will be a basic vertical stripe pattern. To represent the quilt block, we will use two different characters you will need to enter."
+    <<"You will also be prompted to enter a length and width." << std::endl << std::endl;
+    
     //char we will use in the even columns
     char even;
     //char used in odd columns
@@ -95,7 +100,9 @@ int main() {
     return 0;
 }
 char** initArray(int length, int width) {
+    //init the width of the array by creating a pointer to a array of pointers
     char **arr = new char*[width];
+    //for each array in the array of pointers, point to a new array of size length
     for (int i = 0; i < width; i++) {
         arr[i] = new char[length];
     }
@@ -103,18 +110,26 @@ char** initArray(int length, int width) {
     return arr;
 }
 char** buildQuilt(int length, int width, char even, char odd) {
+    
     char **quilt;
+    
+    //dynamically allocate memory for the quilt
     quilt = initArray(length, width);
     
+    //put the characters in the correct spt
     for(int lcv = 0; lcv < width; lcv++) {
         for (int lcv2 = 0; lcv2 < length; lcv2++){
+            //temporarily hold the character value we are going to use
             char temp;
+            
+            //if is even use even, else use odd
             if(lcv2 % 2 == 0) {
                 temp = even;
             }
             else {
                 temp = odd;
             }
+            //put the character at the correct index
             quilt[lcv][lcv2] = temp;
         }
     }
@@ -125,6 +140,7 @@ void printQuilt(char** quilt, int width, int length) {
         for(int lcv2 = 0; lcv2 < length; lcv2++) {
             std::cout << quilt[lcv][lcv2] << " ";
         }
+        //end line at end of width
         std::cout << std::endl;
     }
 }
