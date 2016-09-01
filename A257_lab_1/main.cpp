@@ -103,10 +103,10 @@ int main() {
 }
 char** initArray(const int length, const int width) {
     //init the width of the array by creating a pointer to a array of pointers
-    char **arr = new char*[width];
+    char **arr = new char*[length];
     //for each array in the array of pointers, point to a new array of size length
-    for (int i = 0; i < width; i++) {
-        arr[i] = new char[length];
+    for (int i = 0; i < length; i++) {
+        arr[i] = new char[width];
     }
     
     return arr;
@@ -119,8 +119,8 @@ char** buildQuilt(const int length, const int width, const char even, const char
     quilt = initArray(length, width);
     
     //put the characters in the correct spt
-    for(int lcv = 0; lcv < width; lcv++) {
-        for (int lcv2 = 0; lcv2 < length; lcv2++){
+    for(int lcv = 0; lcv < length; lcv++) {
+        for (int lcv2 = 0; lcv2 < width; lcv2++){
             //temporarily hold the character value we are going to use
             char temp;
             
@@ -138,9 +138,9 @@ char** buildQuilt(const int length, const int width, const char even, const char
     return quilt;
 }
 void printQuilt(char** quilt, const int width, const int length) {
-    for(int lcv = 0; lcv < width; lcv++) {
-        for(int lcv2 = 0; lcv2 < length; lcv2++) {
-            std::cout << quilt[lcv][lcv2] << " ";
+    for(int lcv = 0; lcv < length; lcv++) {
+        for(int lcv2 = 0; lcv2 < width; lcv2++) {
+            std::cout << quilt[lcv][lcv2];
         }
         //end line at end of width
         std::cout << std::endl;
